@@ -19,6 +19,21 @@
             console.log("Tablou numere: "+numere);
             console.log("Nr. Minim: "+minim);
             console.log("Nr. Maxim: "+maxim);
+
+            //Nr minim si maxim utilizand o bucla for
+            let nrminim = numere[0];
+            let nrmaxim = numere[0];
+            for(let poz=1;poz<numere.length;poz++){
+                if(numere[poz]<nrminim){
+                    nrminim = numere[poz];
+                }
+                if(numere[poz]>nrmaxim){
+                    nrmaxim = numere[poz];
+                }
+            }
+            console.log("Nr minim si maxim utilizand o bucla for:");
+            console.log("Nr. Min: "+nrminim);
+            console.log("Nr. Max: "+nrmaxim);
         </script>
     </body>
 </html>
