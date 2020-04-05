@@ -1,0 +1,193 @@
+<!--Tema curs 2
+Repository: https://github.com/sebyschlachter/Homeworks_SV_JS_2020
+-->
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            /*Exercitiul 1
+            Folosind switch statement transformati urmatoarea suma din 749 RON in EUR, HUF, USD.*/
+            console.log("Exercitiul 1 ----------");
+            const moneda = "EURO";
+            let suma = 749;
+            console.log(suma+" RON ");
+            switch (moneda) {
+                case "EURO":
+                    suma /=  4.83;
+                    break;
+                case "HUF":
+                    suma *=  75.73;
+                    break;
+                case "USD":
+                    suma /=  4.47;
+                    break;
+                default:
+                    suma = suma;
+            }    
+            console.log(suma+" "+ moneda);
+
+            /*Exercitiul 2
+            Scrieti o functie care primeste un parametru si returneaza tipul acestuia.*/
+            console.log("Exercitiul 2 ----------");
+            function tipVariabila(variabila){
+                return typeof variabila;
+            }
+            let variabila = "seby";
+            console.log("Tipul de date al variabilei este: "+tipVariabila(variabila));
+
+            /*Exercitiul 3
+            Scrieti o functie javascript care accepta ca parametru un string care ia fiecare 
+            cuvant in parte si ii extrage prima litera, dupa care concateneaza literele extrase*/
+            console.log("Exercitiul 3 ----------");
+            let nume = "Universitatea Tehnica Cluj Napoca";
+            function firstLetters(nume){
+                let cuvinte = nume.split(" ");
+                let letters="";
+                for(let i=0;i<cuvinte.length;i++){
+                    letters+=cuvinte[i].charAt(0);
+                }
+                return letters;
+            }
+            console.log(nume+" => "+firstLetters(nume));
+            
+            const fraze = [
+            "Quisque faucibus ipsum id nibh egestas bibendum.",
+            "Phasellus tincidunt sapien nec est tempus lacinia.",
+            "Curabitur ac elit at turpis ultrices hendrerit at et tellus.",
+            "Praesent a magna a ligula gravida sodales eu ut erat.",
+            "Ut eleifend velit vitae ipsum mattis viverra."
+            ];
+            /*Transformati fiecare valoare din array-ul de mai sus cu functia definita anterior*/
+            for(let i=0;i<fraze.length;i++){
+                console.log(fraze[i]+" => "+firstLetters(fraze[i]));
+            }
+
+            /*Exercitiul 4
+            Declarati o clasa Shape care sa contina urmatoarele proprietati si metode
+            Proprietati: culoare, array care sa contina laturile (eg [4,3,5])
+            Metode: perimetru, semiperimetru,
+            tipul poigonului: trighiuni 3 laturi, patrulater 4 laturi, pentagon 5 laturi, hexagon 6 laturi.
+            daca contine mai multe sau mai putine laturi, WORK IN PROGRESS
+            Creati o instanta si afisati: tipul poligonului, culoarea, perimetru, semiperimetru*/
+            console.log("Exercitiul 4 ----------");
+            class Shape {
+                constructor(culoare, laturi){
+                    this.culoare = culoare;
+                    this.laturi = laturi;
+                }
+                Perimetru(){
+                    let p=0;
+                    for(let i=0;i<this.laturi.length;i++){
+                        p +=this.laturi[i];
+                    }
+                    return p;
+                }
+                Semiperimetru(){
+                    return this.Perimetru()/2;
+                }
+                TipPoligon(){
+                    let nrLaturi = this.laturi.length;
+                    let tip="";
+                   /* if(nrLaturi === 3){
+                        tip = "Triunghi 3 laturi";
+                    }else if(nrLaturi === 4){
+                        tip = "Patrulater 4 laturi";
+                    }else if(nrLaturi === 5){
+                        tip = "Pentagon 5 laturi";
+                    }else if(nrLaturi === 6){
+                        tip = "Hexagon 6 laturi";
+                    }else{
+                        tip = "Poligonul contine mai multe sau mai putine laturi";
+                    }
+                    return tip;*/
+                    switch(nrLaturi){
+                        case 3:
+                            tip = "Triunghi 3 laturi";
+                            break;
+                        case 4:
+                            tip = "Patrulater 4 laturi";
+                            break;
+                        case 5:
+                            tip = "Pentagon 5 laturi";
+                            break;
+                        case 6:
+                            tip = "Hexagon 6 laturi";
+                            break;
+                        default:
+                            tip = "Poligonul contine mai multe sau mai putine laturi";
+                    }
+                    return tip;
+                }
+            }
+            const poligon = new Shape("albastru",[1,2,3]);
+            console.log("Tipul poligonului: "+poligon.TipPoligon());
+            console.log("Culoare poligon: "+poligon.culoare);
+            console.log("Perimetrul Poligonului: "+poligon.Perimetru());
+            console.log("Semiperimetrul Poligonului: "+poligon.Semiperimetru());
+
+            /*Exercitiul 5
+            Creati doua clase care pot extinde clasa Shape, in template-ul acestor clase,
+            implementati metoda aria.
+            Creati doua instante si afisati:
+            tipul poligonului, perimetrul, semiperimetrul, aria, culoarea*/
+            
+           //let ariePentagonRegulat = (Math.sqrt(25+10*Math.sqrt(5)))/4 * latura la patrat;
+           //let arieHexagonRegulat = ((3 * Math.sqrt(3)) /2)* latura la patrat;
+           console.log("Exercitiul 5 ----------");
+           class PentagonRegulat extends Shape{
+               constructor(culoare, laturi){
+                   super(culoare,laturi);
+                   if(this.laturi.length!==5){
+                       throw new Error("Tipul poligonului nu este pentagon(5 laturi)");
+                   }
+                   /*if((this.laturi.every( (v) => v === this.laturi[0]))===false){
+                        throw new Error("Toate laturile pentagonului trebuie sa aiba aceeasi dimensiune");
+                   }*/
+                   if(this.laturi[0]!==this.laturi[1] || this.laturi[0]!==this.laturi[2] ||
+                   this.laturi[0]!==this.laturi[3] || this.laturi[0]!==this.laturi[4]){
+                        throw new Error("Toate laturile pentagonului trebuie sa aiba aceeasi dimensiune");
+                   }
+               }
+               Aria(){
+                   return ((Math.sqrt(25+10*Math.sqrt(5)))/4 * (this.laturi[0] ** 2)).toFixed(2);
+               }
+           }
+
+           class HexagonRegulat extends Shape{
+                constructor(culoare, laturi){
+                    super(culoare, laturi);
+                    if(this.laturi.length !==6){
+                        throw new Error("Tipul poligonului nu este hexagon(6 laturi)");
+                    }
+                    /*if((this.laturi.every( (v) => v === this.laturi[0]))===false){
+                        throw new Error("Toate laturile Hexagonului trebuie sa aiba aceeasi dimensiune");
+                   }*/
+                   if(this.laturi[0]!==this.laturi[1] || this.laturi[0]!==this.laturi[2] ||
+                    this.laturi[0]!==this.laturi[3] || this.laturi[0]!==this.laturi[4] ||
+                    this.laturi[0]!==this.laturi[5]){
+                        throw new Error("Toate laturile hexagonului trebuie sa aiba aceeasi dimensiune");
+                   }
+                }
+                Aria(){
+                    return (((3 * Math.sqrt(3)) /2)* (this.laturi[0] ** 2)).toFixed(2);
+                }
+           }
+           console.log("Prima instanta:--------");
+           const ShapePentagon = new PentagonRegulat("rosu",[2,2,2,2,2]);
+           console.log("Tipul poligonului: "+ShapePentagon.TipPoligon());
+           console.log("Perimetrul Poligonului: "+ShapePentagon.Perimetru());
+           console.log("Semiperimetrul Poligonului: "+ShapePentagon.Semiperimetru());
+           console.log("Aria pentagonului: "+ShapePentagon.Aria());
+           console.log("Culoarea poligonului: "+ShapePentagon.culoare);
+
+           console.log("A doua instanta:---------");
+           const ShapeHexagon = new HexagonRegulat("galben",[3,3,3,3,3,3]);
+           console.log("Tipul poligonului: "+ShapeHexagon.TipPoligon());
+           console.log("Perimetrul Poligonului: "+ShapeHexagon.Perimetru());
+           console.log("Semiperimetrul Poligonului: "+ShapeHexagon.Semiperimetru());
+           console.log("Aria pentagonului: "+ShapeHexagon.Aria());
+           console.log("Culoarea poligonului: "+ShapeHexagon.culoare);
+        </script>
+    </body>
+</html>
