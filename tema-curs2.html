@@ -76,17 +76,17 @@ Repository: https://github.com/sebyschlachter/Homeworks_SV_JS_2020
                     this.culoare = culoare;
                     this.laturi = laturi;
                 }
-                Perimetru(){
+                perimetru(){
                     let p=0;
                     for(let i=0;i<this.laturi.length;i++){
                         p +=this.laturi[i];
                     }
                     return p;
                 }
-                Semiperimetru(){
-                    return this.Perimetru()/2;
+                semiperimetru(){
+                    return this.perimetru()/2;
                 }
-                TipPoligon(){
+                tipPoligon(){
                     let nrLaturi = this.laturi.length;
                     let tip="";
                    /* if(nrLaturi === 3){
@@ -121,10 +121,10 @@ Repository: https://github.com/sebyschlachter/Homeworks_SV_JS_2020
                 }
             }
             const poligon = new Shape("albastru",[1,2,3]);
-            console.log("Tipul poligonului: "+poligon.TipPoligon());
+            console.log("Tipul poligonului: "+poligon.tipPoligon());
             console.log("Culoare poligon: "+poligon.culoare);
-            console.log("Perimetrul Poligonului: "+poligon.Perimetru());
-            console.log("Semiperimetrul Poligonului: "+poligon.Semiperimetru());
+            console.log("Perimetrul Poligonului: "+poligon.perimetru());
+            console.log("Semiperimetrul Poligonului: "+poligon.semiperimetru());
 
             /*Exercitiul 5
             Creati doua clase care pot extinde clasa Shape, in template-ul acestor clase,
@@ -136,57 +136,79 @@ Repository: https://github.com/sebyschlachter/Homeworks_SV_JS_2020
            //let arieHexagonRegulat = ((3 * Math.sqrt(3)) /2)* latura la patrat;
            console.log("Exercitiul 5 ----------");
            class PentagonRegulat extends Shape{
-               constructor(culoare, laturi){
-                   super(culoare,laturi);
-                   if(this.laturi.length!==5){
+               constructor(culoare, latura){
+                   super(culoare);
+                   this.latura = latura;
+               }
+                  /* if(this.laturi.length!==5){
                        throw new Error("Tipul poligonului nu este pentagon(5 laturi)");
-                   }
+                   }*/
                    /*if((this.laturi.every( (v) => v === this.laturi[0]))===false){
                         throw new Error("Toate laturile pentagonului trebuie sa aiba aceeasi dimensiune");
                    }*/
-                   if(this.laturi[0]!==this.laturi[1] || this.laturi[0]!==this.laturi[2] ||
+                  /* if(this.laturi[0]!==this.laturi[1] || this.laturi[0]!==this.laturi[2] ||
                    this.laturi[0]!==this.laturi[3] || this.laturi[0]!==this.laturi[4]){
                         throw new Error("Toate laturile pentagonului trebuie sa aiba aceeasi dimensiune");
                    }
+               }*/
+               aria(){
+                   return ((Math.sqrt(25+10*Math.sqrt(5)))/4 * (this.latura ** 2)).toFixed(2);
                }
-               Aria(){
-                   return ((Math.sqrt(25+10*Math.sqrt(5)))/4 * (this.laturi[0] ** 2)).toFixed(2);
+               tipPoligon(){
+                   return "Pentagon regulat(5 laturi identice)";
+               }
+               perimetru(){
+                   return this.latura*5;
+               }
+               semiperimetru(){
+                   return this.perimetru()/2;
                }
            }
 
            class HexagonRegulat extends Shape{
-                constructor(culoare, laturi){
-                    super(culoare, laturi);
-                    if(this.laturi.length !==6){
+                constructor(culoare, latura){
+                    super(culoare);
+                    this.latura=latura;
+                }
+                   /* if(this.laturi.length !==6){
                         throw new Error("Tipul poligonului nu este hexagon(6 laturi)");
-                    }
+                    }*/
                     /*if((this.laturi.every( (v) => v === this.laturi[0]))===false){
                         throw new Error("Toate laturile Hexagonului trebuie sa aiba aceeasi dimensiune");
                    }*/
-                   if(this.laturi[0]!==this.laturi[1] || this.laturi[0]!==this.laturi[2] ||
+                   /*if(this.laturi[0]!==this.laturi[1] || this.laturi[0]!==this.laturi[2] ||
                     this.laturi[0]!==this.laturi[3] || this.laturi[0]!==this.laturi[4] ||
                     this.laturi[0]!==this.laturi[5]){
                         throw new Error("Toate laturile hexagonului trebuie sa aiba aceeasi dimensiune");
                    }
+                }*/
+                aria(){
+                    return (((3 * Math.sqrt(3)) /2)* (this.latura ** 2)).toFixed(2);
                 }
-                Aria(){
-                    return (((3 * Math.sqrt(3)) /2)* (this.laturi[0] ** 2)).toFixed(2);
-                }
+                tipPoligon(){
+                   return "Hexagon regulat(6 laturi identice)";
+               }
+                perimetru(){
+                   return this.latura*6;
+               }
+                semiperimetru(){
+                   return this.perimetru()/2;
+               }
            }
            console.log("Prima instanta:--------");
-           const ShapePentagon = new PentagonRegulat("rosu",[2,2,2,2,2]);
-           console.log("Tipul poligonului: "+ShapePentagon.TipPoligon());
-           console.log("Perimetrul Poligonului: "+ShapePentagon.Perimetru());
-           console.log("Semiperimetrul Poligonului: "+ShapePentagon.Semiperimetru());
-           console.log("Aria pentagonului: "+ShapePentagon.Aria());
+           const ShapePentagon = new PentagonRegulat("rosu",2);
+           console.log("Tipul poligonului: "+ShapePentagon.tipPoligon());
+           console.log("Perimetrul Poligonului: "+ShapePentagon.perimetru());
+           console.log("Semiperimetrul Poligonului: "+ShapePentagon.semiperimetru());
+           console.log("Aria pentagonului: "+ShapePentagon.aria());
            console.log("Culoarea poligonului: "+ShapePentagon.culoare);
 
            console.log("A doua instanta:---------");
-           const ShapeHexagon = new HexagonRegulat("galben",[3,3,3,3,3,3]);
-           console.log("Tipul poligonului: "+ShapeHexagon.TipPoligon());
-           console.log("Perimetrul Poligonului: "+ShapeHexagon.Perimetru());
-           console.log("Semiperimetrul Poligonului: "+ShapeHexagon.Semiperimetru());
-           console.log("Aria pentagonului: "+ShapeHexagon.Aria());
+           const ShapeHexagon = new HexagonRegulat("galben",3);
+           console.log("Tipul poligonului: "+ShapeHexagon.tipPoligon());
+           console.log("Perimetrul Poligonului: "+ShapeHexagon.perimetru());
+           console.log("Semiperimetrul Poligonului: "+ShapeHexagon.semiperimetru());
+           console.log("Aria pentagonului: "+ShapeHexagon.aria());
            console.log("Culoarea poligonului: "+ShapeHexagon.culoare);
         </script>
     </body>
