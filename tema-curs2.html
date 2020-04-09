@@ -137,7 +137,7 @@ Repository: https://github.com/sebyschlachter/Homeworks_SV_JS_2020
            console.log("Exercitiul 5 ----------");
            class PentagonRegulat extends Shape{
                constructor(culoare, latura){
-                   super(culoare);
+                   super(culoare,[latura, latura, latura, latura, latura]);
                    this.latura = latura;
                }
                   /* if(this.laturi.length!==5){
@@ -151,23 +151,15 @@ Repository: https://github.com/sebyschlachter/Homeworks_SV_JS_2020
                         throw new Error("Toate laturile pentagonului trebuie sa aiba aceeasi dimensiune");
                    }
                }*/
-               aria(){
+                aria(){
                    return ((Math.sqrt(25+10*Math.sqrt(5)))/4 * (this.latura ** 2)).toFixed(2);
-               }
-               tipPoligon(){
-                   return "Pentagon regulat(5 laturi identice)";
-               }
-               perimetru(){
-                   return this.latura*5;
-               }
-               semiperimetru(){
-                   return this.perimetru()/2;
-               }
+                }
+               
            }
 
            class HexagonRegulat extends Shape{
                 constructor(culoare, latura){
-                    super(culoare);
+                    super(culoare, [latura, latura, latura, latura, latura, latura]);
                     this.latura=latura;
                 }
                    /* if(this.laturi.length !==6){
@@ -185,15 +177,6 @@ Repository: https://github.com/sebyschlachter/Homeworks_SV_JS_2020
                 aria(){
                     return (((3 * Math.sqrt(3)) /2)* (this.latura ** 2)).toFixed(2);
                 }
-                tipPoligon(){
-                   return "Hexagon regulat(6 laturi identice)";
-               }
-                perimetru(){
-                   return this.latura*6;
-               }
-                semiperimetru(){
-                   return this.perimetru()/2;
-               }
            }
            console.log("Prima instanta:--------");
            const ShapePentagon = new PentagonRegulat("rosu",2);
@@ -210,6 +193,9 @@ Repository: https://github.com/sebyschlachter/Homeworks_SV_JS_2020
            console.log("Semiperimetrul Poligonului: "+ShapeHexagon.semiperimetru());
            console.log("Aria pentagonului: "+ShapeHexagon.aria());
            console.log("Culoarea poligonului: "+ShapeHexagon.culoare);
+
+           
+           
         </script>
     </body>
 </html>
