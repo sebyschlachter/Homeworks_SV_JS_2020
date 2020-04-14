@@ -44,8 +44,7 @@ class Cell {
             }
         }
     }
-    drawOneRectangle(){//deseneaza un singur patrat de la randul si coloana data in instanta obiectului
-                        //pana la capetele canvas-ului.
+    drawOneRectangle(){//deseneaza un singur patrat de dimensiune 2x2 cels de la randul si coloana data in instanta obiectului
         contextEx5.beginPath();
         contextEx5.fillStyle = this.color;
         //context5.strokeStyle = this.color;
