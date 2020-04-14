@@ -49,7 +49,7 @@ class Cell {
         contextEx5.beginPath();
         contextEx5.fillStyle = this.color;
         //context5.strokeStyle = this.color;
-        contextEx5.rect(this.column*50, this.row*50, canvasEx5.width, canvasEx5.height);
+        contextEx5.rect(this.column*50, this.row*50, 50*2, 50*2);
         contextEx5.fill();
         contextEx5.stroke();
         contextEx5.closePath();
@@ -58,7 +58,7 @@ class Cell {
 const grid1x1 = new Cell(1,1,"white");
 grid1x1.drawEmptyGrid1x1();//deseneaza un grid cu patrate de dimensiune 1x1 in tot canvas-ul.
 const square = new Cell(2,3,"blue");
-square.draw();//deseneaza un patrat format din celule 2x2 incepand de la randul si coloana definite
+//square.draw();//deseneaza un patrat format din celule 2x2 incepand de la randul si coloana definite
             // in instanta(radnurile si coloanele de dimensiune 1x1).
-//square.drawOneRectangle();//deseneaza un singur patrat de la randul si coloana data in instanta
-                            //obiectului pana la capetele canvas-ului.
+square.drawOneRectangle();//deseneaza un singur patrat de dimensiune 2x2 cels de la randul si coloana data in instanta
+                            
