@@ -58,7 +58,7 @@ Nota: Puteti folosi cod din exemplul de la cursul 3: https://github.com/alexcici
 const canvasEx3 = document.getElementById("canvasEx3");
 const contextEx3 = canvasEx3.getContext("2d");
 
-let x = 30;
+let x = 20;
 let y = 100;
 let radius = 20;
 let colors = ["blue", "red", "yellow", "black", "white", "green"];
