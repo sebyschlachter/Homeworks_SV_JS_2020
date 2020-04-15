@@ -60,4 +60,5 @@ const square = new Cell(2,3,"blue");
 //square.draw();//deseneaza un patrat format din celule 2x2 incepand de la randul si coloana definite
             // in instanta(radnurile si coloanele de dimensiune 1x1).
 square.drawOneRectangle();//deseneaza un singur patrat de dimensiune 2x2 cels de la randul si coloana data in instanta
-                            
+const sqaure2 = new Cell(5,7,"red");
+sqaure2.drawOneRectangle();                            
