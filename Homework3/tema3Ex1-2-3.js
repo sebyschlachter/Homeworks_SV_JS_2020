@@ -58,58 +58,70 @@ Nota: Puteti folosi cod din exemplul de la cursul 3: https://github.com/alexcici
 const canvasEx3 = document.getElementById("canvasEx3");
 const contextEx3 = canvasEx3.getContext("2d");
 
-let x = 30;
-let y = 100;
-let radius = 20;
-let colors = ["blue", "red", "yellow", "black", "white", "green"];
-let currentColor = colors[getRandom(0,colors.length)];
-let dx = 1;
+class Circle {
+    constructor(x, y, radius, color){
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.dx = 1;
+    }
+    drawEx3(){
+        contextEx3.beginPath();
+        contextEx3.arc(this.x, this.y, this.radius,0, 2 * Math.PI);
+        contextEx3.stroke();
+        contextEx3.fillStyle = this.color;
+        contextEx3.fill();
+        contextEx3.closePath();
+    }
+    moveEx3(stepX){
+        this.x+=stepX * this.dx;
+        this.changeDiameter();
+        this.changeDirectionIfExceededBounds(stepX);
+        this.drawEx3();
+    }
+    changeDiameter(){
+        if(this.dx==1){
+            this.radius +=4;
+        }else{
+            this.radius -=4;
+        }
+    }
+    changeDirectionIfExceededBounds(stepX) {
+        if (this.x > canvasEx3.width - this.radius - stepX + 4) {
+            this.x = canvasEx3.width - this.radius;
+            this.dx = -1;
+            this.color = this.getRandomColor(); 
+        }
+        if (this.x < this.radius + stepX - 4) {
+            this.x = this.radius;
+            this.dx = 1;
+            this.color = this.getRandomColor(); 
+        }
+    }
+    getRandom(min, max){
+        return  min + Math.floor(Math.random() * (max - min));
+    }
+    getRandomColor(){
+        let colors = ["blue", "red", "yellow", "black", "white", "green"];
+        return colors[this.getRandom(0,colors.length)];
+    }
+}
 
-function drawEx3(){
-    contextEx3.beginPath();
-    contextEx3.arc(x,y,radius,0,2 * Math.PI);
-    contextEx3.stroke();
-    contextEx3.fillStyle = currentColor;
-    contextEx3.fill();
-    contextEx3.closePath();
-}
-function moveEx3(stepX){
-    x+=stepX * dx;
-    changeDiameter();
-    changeDirectionIfExceededBounds(stepX);
-   
-    drawEx3();
-}
-function changeDiameter(){
-    if(dx==1){
-        radius +=4;
-    }else{
-        radius -=4;
-    }
-}
-function changeDirectionIfExceededBounds(stepX) {
-    if (x > canvasEx3.width - radius - stepX + 4) {
-        x = canvasEx3.width - radius;
-        dx = -1;
-        currentColor = colors[getRandom(0,colors.length)];
-    }
-    if (x < radius + stepX - 4) {
-        x = radius;
-        dx = 1;
-        currentColor = colors[getRandom(0,colors.length)];
-    }
-}
-function getRandom(min, max){
-    return  min + Math.floor(Math.random() * (max - min));
-}
-function animate(){
+
+function titluEx3(){
     contextEx3.clearRect(0, 0, canvasEx3.width, canvasEx3.height);
     contextEx3.beginPath();
     contextEx3.fillStyle = "black";
     contextEx3.fill();
     contextEx3.fillText("Exercitiul 3.", 5, 10);
     contextEx3.closePath();
-    moveEx3(20);
 }
 
+const cerc = new Circle(20,100,20,"blue");
+
+function animate(){
+    titluEx3();
+    cerc.moveEx3(20);   
+}
 setInterval(animate,500)

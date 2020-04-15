@@ -23,7 +23,7 @@ class Cell {
 const rows = 8;
 const columns = 8;
 
-let grid = [];
+const grid = [];
 
 const createGrid = () => {
     for (let row = 0; row < rows; row++) {
