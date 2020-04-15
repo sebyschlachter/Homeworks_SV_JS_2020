@@ -58,7 +58,7 @@ Nota: Puteti folosi cod din exemplul de la cursul 3: https://github.com/alexcici
 const canvasEx3 = document.getElementById("canvasEx3");
 const contextEx3 = canvasEx3.getContext("2d");
 
-let x = 20;
+let x = 30;
 let y = 100;
 let radius = 20;
 let colors = ["blue", "red", "yellow", "black", "white", "green"];
@@ -74,9 +74,10 @@ function drawEx3(){
     contextEx3.closePath();
 }
 function moveEx3(stepX){
-    changeDirectionIfExceededBounds();
-    changeDiameter();
     x+=stepX * dx;
+    changeDiameter();
+    changeDirectionIfExceededBounds(stepX);
+   
     drawEx3();
 }
 function changeDiameter(){
@@ -86,12 +87,14 @@ function changeDiameter(){
         radius -=4;
     }
 }
-function changeDirectionIfExceededBounds() {
-    if (x >= canvasEx3.width - radius) {
+function changeDirectionIfExceededBounds(stepX) {
+    if (x > canvasEx3.width - radius - stepX + 4) {
+        x = canvasEx3.width - radius;
         dx = -1;
         currentColor = colors[getRandom(0,colors.length)];
     }
-    if (x <= radius) {
+    if (x < radius + stepX - 4) {
+        x = radius;
         dx = 1;
         currentColor = colors[getRandom(0,colors.length)];
     }
