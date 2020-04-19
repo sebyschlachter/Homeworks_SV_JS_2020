@@ -1,15 +1,15 @@
 export class Movement {
-    constructor(grid){
+    constructor(grid) {
         this.grid = grid;
     }
-    clearGrid(){
+    clearGrid() {
         this.grid.draw();
     }
-    move(direction, shape){
-        switch(direction){
-            case "ArrowUp":    
+    move(direction, shape) {
+        switch (direction) {
+            case "ArrowUp":
                 shape.moveUp();
-                shape.draw(); 
+                shape.draw();
                 break;
             case "ArrowDown":
                 shape.moveDown();

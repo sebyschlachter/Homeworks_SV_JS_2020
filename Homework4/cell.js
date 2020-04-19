@@ -1,5 +1,5 @@
 export class Cell {
-    constructor(x, y, color){
+    constructor(x, y, color) {
         this.x = x;
         this.y = y;
         this.color = color;
@@ -8,8 +8,8 @@ export class Cell {
         this.width = 30;
         this.height = 30;
     }
-    
-    draw(color){
+
+    draw(color) {
         this.context.beginPath();
         this.context.fillStyle = color || this.color;
         this.context.rect(this.y * this.height, this.x * this.width, this.width, this.height);

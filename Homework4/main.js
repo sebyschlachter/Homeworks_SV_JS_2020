@@ -7,9 +7,9 @@
     Am creat o clasa Movement unde am mutat logica de movement intr-o functie.
 4.Adaugati clasa Shape si folositi-o ca base class pentru formele create, mutati logica comuna in base class.
     Am creat clasa de baza Shape care e mostenita in toate cele 7 clase pt formele din tetris.
-*/ 
+*/
 
-import {Grid} from './grid.js';
+import { Grid } from './grid.js';
 import { L } from './shapes/l-shape.js';
 import { O } from './shapes/o-shape.js';
 import { I } from './shapes/i-shape.js';
@@ -22,35 +22,35 @@ import { Movement } from './movement.js';
 const rows = 20;
 const columns = 10;
 
-const grid = new Grid(rows,columns);
+const grid = new Grid(rows, columns);
 grid.create();
-grid.draw(); 
+grid.draw();
 
-const lShape = new L(0,3,grid.cells);
+const lShape = new L(0, 3, grid.cells);
 lShape.draw();
 
-const oShape = new O(5,3,grid.cells);
+const oShape = new O(5, 3, grid.cells);
 oShape.draw();
 
-const iShape = new I(0,7,grid.cells);
+const iShape = new I(0, 7, grid.cells);
 iShape.draw();
 
-const sShape = new S(5,6,grid.cells);
+const sShape = new S(5, 6, grid.cells);
 sShape.draw();
 
-const zShape = new Z(8,3,grid.cells);
+const zShape = new Z(8, 3, grid.cells);
 zShape.draw();
 
-const jShape = new J(8,7,grid.cells);
+const jShape = new J(8, 7, grid.cells);
 jShape.draw();
 
-const tShape = new T(11,3,grid.cells);
+const tShape = new T(11, 3, grid.cells);
 tShape.draw();
 
 const moveShape = new Movement(grid);
 
-document.addEventListener("keydown", event =>{
-    if(event.key == "Enter"){
+document.addEventListener("keydown", event => {
+    if (event.key == "Enter") {
         lShape.changeColor();
         oShape.changeColor();
         iShape.changeColor();
@@ -58,7 +58,7 @@ document.addEventListener("keydown", event =>{
         zShape.changeColor();
         jShape.changeColor();
         tShape.changeColor();
-    }else{
+    } else {
         moveShape.clearGrid();
         moveShape.move(event.key, lShape);
         moveShape.move(event.key, oShape);
