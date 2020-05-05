@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#leftSide {
+    float: left;
+    width: 150px;
+    height: 600px;
+    border: 2px solid black;
+    background-image: url("poza1.png");
+}
+
+#leftSide h1 {
+    word-wrap: break-word;
+    width: 20px;
+    padding-left: 40%;
+    padding-top: 150px;
+    /*font-weight: bold;*/
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#centerSide {
+    float: left;
+    border: 2px solid red;
+}
+
+#rightSide {
+    border: 2px solid black;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 90px;
+    float: left;
+    width: 150px;
+    height: 510px;
+    background-image: url("poza4.jpg");
+}
+
+#lines {
+    border: 4px solid black;
+    text-align: center;
+}
+
+#scorePlaceHolder {
+    border: 4px solid black;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#canvasNextShape {
+    border: 4px solid black;
+    margin-top: 10px;
+    margin-left: 11px;
+    margin-right: 11px;
+}
+
+#canvasNextShape p {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#startGameDiv {
+    margin-top: 25px;
+    border: 4px solid black;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#gameOver {
+    color: red;
+    padding-left: 30px;
+    visibility: hidden;
+}

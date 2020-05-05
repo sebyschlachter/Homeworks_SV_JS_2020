@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="main.js" type="module"></script>
+</head>
+
+<body>
+    <div id="leftSide">
+        <h1>TETRIS</h1>
+    </div>
+    <div id="centerSide">
+        <canvas id="canvasId" width="300px" height="600px"></canvas>
+    </div>
+    <div id="rightSide">
+        <div id="lines">
+            <h2>Lines: <strong id="linesNumber">0</strong></h2>
+        </div>
+        <div id="scorePlaceHolder">
+            <h2>Score: <strong id="score">0</strong></h2>
+        </div>
+        <div id="canvasNextShape">
+            <p>Next Shape:</p>
+            <canvas id="canvasIdNextShape" width="150px" height="120px"></canvas>
+        </div>
+        <div id="startGameDiv">
+            <button id="startGame">Start</button>
+        </div>
+        <div id="gameOver">
+            <h2>GAME OVER!</h2>
+        </div>
+    </div>
+</body>
+
+</html>
