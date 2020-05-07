@@ -14,10 +14,12 @@ const gridNextShape = new Grid(4, 4, 'canvasIdNextShape'); //grid for next shape
 gridNextShape.create();
 gridNextShape.draw();
 
-let shapeNumber = getRandomInt(7);
-let nextShapeNumber = getRandomInt(7);
-let shape = generateNewShape(grid.cells, shapeNumber, 4); //shape1
-let nextShape = generateNewShape(gridNextShape.cells, nextShapeNumber, 0); //nextshape
+let [shapeNumber, nextShapeNumber] = [getRandomInt(7), getRandomInt(7)];
+// let shapeNumber = getRandomInt(7);
+// let nextShapeNumber = getRandomInt(7);
+let [shape, nextShape] = [generateNewShape(grid.cells, shapeNumber, 4), generateNewShape(gridNextShape.cells, nextShapeNumber, 0)];
+// let shape = generateNewShape(grid.cells, shapeNumber, 4); //shape1
+// let nextShape = generateNewShape(gridNextShape.cells, nextShapeNumber, 0); //nextshape
 let movement = new Movement(shape, grid.cells);
 
 //shape.draw();//shape1
@@ -51,7 +53,7 @@ document.addEventListener("keydown", event => {
 
 const animate = () => {
     if (movement.canMove) {
-        movement.down(intervalId, nextShape.getTemplate().length, tetrisScore);
+        movement.down(intervalId, nextShape.getTemplate().length);
         console.log('Moving');
     } else {
         console.log('Stopped');
@@ -90,3 +92,16 @@ document.getElementById('startGame').addEventListener('click', () => {
     grid.draw();
     intervalId = setInterval(animate, 200);
 })
+
+/*class test {
+    constructor(...args) {
+        [this.unu, this.doi, this.trei] = [...args];
+    }
+
+    afiseaza() {
+        console.log(this.unu + " " + this.doi + " " + this.trei);
+    }
+}
+
+const t = new test(1, 2, 3);
+t.afiseaza();*/

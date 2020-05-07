@@ -1,12 +1,15 @@
 export class Shape {
-    constructor(row, column, cells, color) {
-        this.row = row;
-        this.column = column;
-        this.cells = cells;
-        this.color = color;
+    // constructor(row, column, cells, color) {
+    //     this.row = row;
+    //     this.column = column;
+    //     this.cells = cells;
+    //     this.color = color;
+    //     this.templateIndex = 0;
+    // };
+    constructor(...args) {
+        [this.row, this.column, this.cells, this.color] = [...args];
         this.templateIndex = 0;
     };
-
     draw() {
         for (let row = 0; row < this.template.length; row++) {
             for (let column = 0; column < this.template[row].length; column++) {

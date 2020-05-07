@@ -1,8 +1,15 @@
 import { Shape } from "./shape.js";
 
 export class O extends Shape {
-    constructor(row, column, cells) {
-        super(row, column, cells, 'yellow');
+    // constructor(row, column, cells) {
+    //     super(row, column, cells, 'yellow');
+    //     this.template = [
+    //         [1, 1],
+    //         [1, 1]
+    //     ];
+    // }
+    constructor(...args) {
+        super(...args, 'yellow');
         this.template = [
             [1, 1],
             [1, 1]

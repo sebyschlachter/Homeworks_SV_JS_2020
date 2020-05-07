@@ -1,10 +1,14 @@
 import { Cell } from './cell.js';
 
 export class Grid {
-    constructor(rows, columns, canvasId) {
-        this.rows = rows;
-        this.columns = columns;
-        this.canvasId = canvasId;
+    // constructor(rows, columns, canvasId) {
+    //     this.rows = rows;
+    //     this.columns = columns;
+    //     this.canvasId = canvasId;
+    //     this.cells = [];
+    // }
+    constructor(...args) {
+        [this.rows, this.columns, this.canvasId] = [...args];
         this.cells = [];
     }
 

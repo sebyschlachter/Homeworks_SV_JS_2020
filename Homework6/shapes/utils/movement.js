@@ -1,14 +1,19 @@
 import { Validator } from "./validator.js";
 
 export class Movement {
-    constructor(shape, cells) {
-        this.shape = shape;
-        this.cells = cells;
-        this.validator = new Validator(this.shape, this.cells);
+    // constructor(shape, cells) {
+    //     this.shape = shape;
+    //     this.cells = cells;
+    //     this.validator = new Validator(this.shape, this.cells);
+    //     this.canMove = true;
+    //     this.gameOver = false;
+    // }
+    constructor(...args) {
+        [this.shape, this.cells] = [...args];
+        this.validator = new Validator(...args);
         this.canMove = true;
         this.gameOver = false;
     }
-
     up() {
         this.shape.row--;
     }
